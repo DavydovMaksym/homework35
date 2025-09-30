@@ -1,0 +1,56 @@
+#include <iostream>
+
+class Animal
+{
+public:
+    virtual void speak()
+    {
+        std::cout << "Some animal sound" << std::endl;
+    }
+
+    virtual ~Animal() = default;
+};
+
+class Dog : public Animal
+{
+public:
+    void speak() override
+    {
+        std::cout << "Woof!" << std::endl;
+    }
+
+    void bark()
+    {
+        std::cout << "Dog is barking!" << std::endl;
+    }
+};
+
+void checkAnimal(Animal* a)
+{
+    Dog* d = dynamic_cast<Dog*>(a);
+
+    if (d != nullptr)
+    {
+        std::cout << "It's a Dog!" << std::endl;
+        d->bark();
+    }
+    else
+    {
+        std::cout << "Not a Dog." << std::endl;
+        a->speak();
+    }
+}
+
+int main()
+{
+    Animal* a1 = new Animal();
+    Animal* a2 = new Dog();
+
+    checkAnimal(a1);
+    checkAnimal(a2);
+
+    delete a1;
+    delete a2;
+
+    return 0;
+}
