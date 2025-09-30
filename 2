@@ -1,0 +1,17 @@
+#include <iostream>
+
+void modify(char* str)
+{
+    str[0] = 'H';
+}
+
+int main()
+{
+    const char* text = "hello";
+
+    modify(const_cast<char*>(text));// помилка викликається бо дані захищені від перепису
+
+    std::cout << text << std::endl;
+
+    return 0;
+}
