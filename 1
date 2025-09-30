@@ -1,0 +1,15 @@
+#include <iostream>
+
+int main()
+{
+    double value;
+    std::cout << "Enter a double: ";
+    std::cin >> value;
+
+    int intValue = static_cast<int>(value);
+
+    std::cout << "Double: " << value << std::endl;
+    std::cout << "Integer: " << intValue << std::endl;
+
+    return 0;
+}
